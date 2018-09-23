@@ -1,0 +1,4 @@
+﻿  stdafx.cpp
+  Lab1.cpp
+d:\misha\git\programming-course\labs\lab1\lab1\lab1.cpp(82): warning C4715: Forward_list<int>::operator[]: значение возвращается не при всех путях выполнения
+  Lab1.vcxproj -> D:\misha\git\programming-course\Labs\Lab1\Debug\Lab1.exe
