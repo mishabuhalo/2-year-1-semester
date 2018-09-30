@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Console_test_of_project
 {
-    class CurrencyPrise
+    class CurrencyPrice
     {
         public USD USD { get; set;}
     }

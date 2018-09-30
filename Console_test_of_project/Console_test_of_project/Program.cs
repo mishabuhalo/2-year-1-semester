@@ -6,37 +6,35 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using Newtonsoft.Json;
+using System.Web;
 namespace Console_test_of_project
 {
     class Program
     {
         static void Main(string[] args)
         {
-            for (int i = 1; i < 224; i++)
+
+            string url = "https://api.coinmarketcap.com/v2/ticker/?&sort=id";
+
+            HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
+
+            HttpWebResponse httpWebResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+
+            string response;
+
+            using (StreamReader streamReader = new StreamReader(httpWebResponse.GetResponseStream()))
             {
-                string url = "https://api.coinmarketcap.com/v2/ticker/" + i + "//";
+                response = streamReader.ReadToEnd();
+            }
 
-                HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
+             CurrencyResponse  currencyResponse =  JsonConvert.DeserializeObject<CurrencyResponse>(response);
 
-                try
-                {
-                    HttpWebResponse httpWebResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-
-                    string response;
-
-                    using (StreamReader streamReader = new StreamReader(httpWebResponse.GetResponseStream()))
-                    {
-                        response = streamReader.ReadToEnd();
-                    }
-                    CurrencyResponse currencyResponse = JsonConvert.DeserializeObject<CurrencyResponse>(response);
-                    Console.WriteLine("Price of {0} : {1} usd", currencyResponse.data.name, currencyResponse.data.quotes.USD.price);
-                }
-                catch
-                {
-                    continue;
-                }
+            foreach (var k in currencyResponse.data.Keys)
+            {
+                    Console.WriteLine("Price of {0} : {1} usd", currencyResponse.data[k].name, currencyResponse.data[k].quotes.USD.price);
 
             }
+
 
             Console.WriteLine("It is End");
             Console.ReadLine();
