@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include <iostream>
 #include <list>
+#include <functional>
 
 using namespace std;
 
@@ -19,6 +20,7 @@ public:
 	void print();
 	void remove(int pos);
 	void insert(T data, int pos);
+	void sort();
 
 private:
 	list<T> list;
@@ -125,4 +127,10 @@ inline void ListOnLibraryList<T>::insert(T data, int pos)
 		}
 		list.insert(i, data);
 	}
+}
+
+template<typename T>
+inline void ListOnLibraryList<T>::sort()
+{
+	list.sort();
 }

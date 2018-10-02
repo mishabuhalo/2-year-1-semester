@@ -18,7 +18,12 @@ public:
 	void print();
 	void remove(int pos);
 	void insert(T data, int pos);
-
+	void InsertionSort();
+	int GetSize() { return size; }
+	void QuickSort(int low, int high);
+	int Partition(int low, int high);
+	void Merge(int l, int m, int r);
+	void MergeSort(int l, int r);
 private:
 	T * DynamicArray;
 	int size;
@@ -141,18 +146,18 @@ inline void ListOnDynamicArray<T>::remove(int pos)
 	{
 		T *NewArray = new T[size - 1];
 
-		for (int i = 0; i < pos-1; i++)
+		for (int i = 0; i < pos - 1; i++)
 		{
 			NewArray[i] = DynamicArray[i];
 		}
-		for (int i = pos-1; i < size - 1; i++)
+		for (int i = pos - 1; i < size - 1; i++)
 		{
 			NewArray[i] = DynamicArray[i + 1];
 		}
 		delete[] DynamicArray;
 
 		DynamicArray = NewArray;
-		size --;
+		size--;
 	}
 }
 
@@ -189,6 +194,122 @@ inline void ListOnDynamicArray<T>::insert(T data, int pos)
 
 		DynamicArray = NewArray;
 		size++;
+	}
+}
+
+template<typename T>
+inline void ListOnDynamicArray<T>::InsertionSort()
+{
+	int i, j;
+	T key;
+	for (i = 1; i < size; i++)
+	{
+		key = DynamicArray[i];
+		j = i - 1;
+		while (j >= 0 && DynamicArray[j] < key)
+		{
+			DynamicArray[j + 1] = DynamicArray[j];
+			j--;
+		}
+		DynamicArray[j + 1] = key;
+	}
+}
+
+template<typename T>
+inline int ListOnDynamicArray<T>::Partition(int low, int high)
+{
+
+	int pivot = DynamicArray[high];
+	int i = (low - 1);
+
+	for (int j = low; j <= high - 1; j++)
+	{
+		if (DynamicArray[j] <= pivot)
+		{
+			i++;
+			swap(DynamicArray[i], DynamicArray[j]);
+		}
+	}
+	swap(DynamicArray[i + 1], DynamicArray[high]);
+	return (i + 1);
+}
+
+
+
+template<typename T>
+inline void ListOnDynamicArray<T>::Merge(int l, int m, int r)
+{
+	int i, j, k;
+	int n1 = m - l + 1;
+	int n2 = r - m;
+	T * L = new T[n1];
+	T*R = new T[n2];
+
+	for (i = 0; i < n1; i++)
+		L[i] = DynamicArray[l + i];
+	for (j = 0; j < n2; j++)
+		R[j] = DynamicArray[m + 1 + j];
+
+	i = 0;
+	j = 0;
+	k = l;
+	while (i < n1 && j < n2)
+	{
+		if (L[i] <= R[j])
+		{
+			DynamicArray[k] = L[i];
+			i++;
+		}
+		else
+		{
+			DynamicArray[k] = R[j];
+			j++;
+		}
+		k++;
+	}
+
+	while (i < n1)
+	{
+		DynamicArray[k] = L[i];
+		i++;
+		k++;
+	}
+
+
+	while (j < n2)
+	{
+		DynamicArray[k] = R[j];
+		j++;
+		k++;
+	}
+
+}
+template<typename T>
+inline void ListOnDynamicArray<T>::MergeSort(int l, int r)
+{
+	if (l < r)
+	{
+
+		int m = l + (r - l) / 2;
+
+		MergeSort(l, m);
+		MergeSort(m + 1, r);
+
+		Merge(l, m, r);
+	}
+}
+
+template<typename T>
+inline void ListOnDynamicArray<T>::QuickSort(int low, int high)
+{
+	if (low < high)
+	{
+
+		int pi = Partition(low, high);
+
+
+		QuickSort(low, pi - 1);
+		QuickSort(pi + 1, high);
 	}
 }
 
