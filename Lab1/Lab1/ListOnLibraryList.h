@@ -21,6 +21,7 @@ public:
 	void remove(int pos);
 	void insert(T data, int pos);
 	void sort();
+	T& operator[](const int index);
 
 private:
 	list<T> list;
@@ -133,4 +134,16 @@ template<typename T>
 inline void ListOnLibraryList<T>::sort()
 {
 	list.sort();
+}
+
+template<typename T>
+inline T & ListOnLibraryList<T>::operator[](const int index)
+{
+
+		auto i = list.begin();
+		for (int j = 0; j < index-1; ++j)
+		{
+			++i;
+		}
+		return *i;
 }

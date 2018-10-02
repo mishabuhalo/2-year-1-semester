@@ -147,6 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Dates.h" />
     <ClInclude Include="ListOnDynamicArrray.h" />
     <ClInclude Include="ListOnForwardList.h" />
     <ClInclude Include="ListOnLibraryList.h" />

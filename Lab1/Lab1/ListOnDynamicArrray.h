@@ -24,6 +24,7 @@ public:
 	int Partition(int low, int high);
 	void Merge(int l, int m, int r);
 	void MergeSort(int l, int r);
+	T& operator[](const int index);
 private:
 	T * DynamicArray;
 	int size;
@@ -297,6 +298,12 @@ inline void ListOnDynamicArray<T>::MergeSort(int l, int r)
 
 		Merge(l, m, r);
 	}
+}
+
+template<typename T>
+inline T & ListOnDynamicArray<T>::operator[](const int index)
+{
+	return DynamicArray[index-1];
 }
 
 template<typename T>
