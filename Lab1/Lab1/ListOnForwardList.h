@@ -3,10 +3,13 @@
 #include "stdafx.h"
 #include <iostream>
 
+
 using namespace std;
 
+
+
 template <typename T>
-struct  Node
+struct  Node 
 {
 
 	T data;
@@ -19,7 +22,7 @@ struct  Node
 };
 
 template <typename T>
- class Forward_list
+ class Forward_list  : Dates
 {
 public:
 	Node<T> *root;
@@ -44,7 +47,6 @@ public:
 	void MergeSort(Node<T> **root);
 
 private:
-
 	int Size;
 	
 
@@ -163,7 +165,7 @@ T & Forward_list<T>::operator[](const int index)
 		}
 		tmp = tmp->pNext;
 		counter++;
-	}
+	}				
 }
 
 template<typename T>
@@ -215,7 +217,7 @@ template<typename T>
 inline Node<T> * Forward_list<T>::SortedInsert(Node<T> * root, Node<T> * newnode)
 {
 
-	if (root == NULL || newnode->data > root->data)
+	if (root == NULL || newnode->data < root->data)
 	{
 		newnode->pNext = root;
 		root = newnode;
@@ -224,7 +226,7 @@ inline Node<T> * Forward_list<T>::SortedInsert(Node<T> * root, Node<T> * newnode
 	else
 	{
 		Node<T> *current = root;
-		while (current->pNext && !(newnode->data > current->pNext->data))
+		while (current->pNext && !(newnode->data < current->pNext->data))
 			current = current->pNext;
 		newnode->pNext = current->pNext;
 		current->pNext = newnode;

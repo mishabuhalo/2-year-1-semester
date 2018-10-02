@@ -5,7 +5,7 @@
 
 using namespace std;
 template<typename T>
-class ListOnDynamicArray
+class ListOnDynamicArray : Dates
 {
 public:
 	ListOnDynamicArray();
@@ -220,12 +220,12 @@ template<typename T>
 inline int ListOnDynamicArray<T>::Partition(int low, int high)
 {
 
-	int pivot = DynamicArray[high];
+	T pivot = DynamicArray[high];
 	int i = (low - 1);
 
 	for (int j = low; j <= high - 1; j++)
 	{
-		if (DynamicArray[j] <= pivot)
+		if (DynamicArray[j] < pivot)
 		{
 			i++;
 			swap(DynamicArray[i], DynamicArray[j]);

@@ -7,7 +7,7 @@
 using namespace std;
 
 template<typename T>
-class ListOnLibraryList
+class ListOnLibraryList : Dates
 {
 public:
 	ListOnLibraryList();
