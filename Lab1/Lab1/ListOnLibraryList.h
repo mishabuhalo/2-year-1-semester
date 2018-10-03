@@ -3,11 +3,12 @@
 #include <iostream>
 #include <list>
 #include <functional>
+#include <ctime>
 
 using namespace std;
 
 template<typename T>
-class ListOnLibraryList : Dates
+class ListOnLibraryList 
 {
 public:
 	ListOnLibraryList();
@@ -22,6 +23,7 @@ public:
 	void insert(T data, int pos);
 	void sort();
 	T& operator[](const int index);
+	void AddRandomElements();
 
 private:
 	list<T> list;
@@ -136,6 +138,8 @@ inline void ListOnLibraryList<T>::sort()
 	list.sort();
 }
 
+
+
 template<typename T>
 inline T & ListOnLibraryList<T>::operator[](const int index)
 {
@@ -147,3 +151,87 @@ inline T & ListOnLibraryList<T>::operator[](const int index)
 		}
 		return *i;
 }
+
+template<typename T>
+inline void ListOnLibraryList<T>::AddRandomElements()
+{
+	srand(time(0));
+	int count = rand() % 5 + 1;
+
+
+	for (int i = 0; i < count; i++)
+	{
+		T temp;
+		int countOfElement = rand() % 50;
+
+		for (int j = 0; j < countOfElement; ++j)
+		{
+			temp.push_back((rand() % 10));
+		}
+		push_back(temp);
+	}
+}
+
+inline void ListOnLibraryList<string>::AddRandomElements()
+{
+	srand(time(0));
+	int count = rand() % 5 + 1;
+
+
+	for (int i = 0; i < count; i++)
+	{
+		string temp;
+		int countOfElement = rand() % 50;
+
+		for (int j = 0; j < countOfElement; ++j)
+		{
+			temp.push_back((char)(rand() % 10));
+		}
+		push_back(temp);
+	}
+
+
+}
+
+inline void ListOnLibraryList<double>::AddRandomElements()
+{
+	srand(time(0));
+	int count = rand() % 5 + 1;
+
+
+	for (int i = 0; i < count; i++)
+	{
+		double temp;
+		int countOfElement = rand() % 50;
+
+		for (int j = 0; j < countOfElement; ++j)
+		{
+			double temp = (rand() % 10);
+		}
+		push_back(temp);
+	}
+
+
+}
+
+inline void ListOnLibraryList<int>::AddRandomElements()
+{
+	srand(time(0));
+	int count = rand() % 5 + 1;
+
+
+	for (int i = 0; i < count; i++)
+	{
+		int temp;
+		int countOfElement = rand() % 50;
+
+		for (int j = 0; j < countOfElement; ++j)
+		{
+			int temp = (rand() % 10);
+		}
+		push_back(temp);
+	}
+
+
+}
+

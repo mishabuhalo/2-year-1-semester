@@ -2,10 +2,15 @@
 
 #include "stdafx.h"
 #include <iostream>
+#include <string>
+#include <vector>
+#include <time.h>
 
 using namespace std;
+
+
 template<typename T>
-class ListOnDynamicArray : Dates
+class ListOnDynamicArray 
 {
 public:
 	ListOnDynamicArray();
@@ -25,11 +30,13 @@ public:
 	void Merge(int l, int m, int r);
 	void MergeSort(int l, int r);
 	T& operator[](const int index);
+	void AddRandomElements();
 private:
 	T * DynamicArray;
 	int size;
 
 };
+
 
 template<typename T>
 ListOnDynamicArray<T>::ListOnDynamicArray()
@@ -305,6 +312,126 @@ inline T & ListOnDynamicArray<T>::operator[](const int index)
 {
 	return DynamicArray[index-1];
 }
+
+
+inline void ListOnDynamicArray<int>::AddRandomElements()
+{
+	srand(time(0));
+	int count = rand() % 100 + 1;
+
+	int *NewArray = new int[size + count];
+
+	for (int i = 0; i < size; i++)
+	{
+		NewArray[i] = DynamicArray[i];
+	}
+
+	for (int i = size; i < size + count; i++)
+	{
+		int countOfElement = rand() % 100 + 1;
+
+		for (int j = 0; j < countOfElement; ++j)
+		{
+			NewArray[i] = rand() % 50;
+		}
+	}
+
+	delete[] DynamicArray;
+
+	DynamicArray = NewArray;
+	size += count;
+}
+
+
+
+inline void ListOnDynamicArray < double > ::AddRandomElements()
+{
+	srand(time(0));
+	int count = rand() % 100 + 1;
+
+	double *NewArray = new double[size + count];
+
+	for (int i = 0; i < size; i++)
+	{
+		NewArray[i] = DynamicArray[i];
+	}
+
+	for (int i = size; i < size + count; i++)
+	{
+		int countOfElement = rand() % 100 + 1;
+
+		for (int j = 0; j < countOfElement; ++j)
+		{
+			NewArray[i] = (double)( rand() % 50);
+		}
+	}
+
+	delete[] DynamicArray;
+
+	DynamicArray = NewArray;
+	size += count;
+}
+
+
+inline void ListOnDynamicArray < string > ::AddRandomElements()
+{
+	srand(time(0));
+	int count = rand() % 100 + 1;
+
+	string *NewArray = new string[size + count];
+
+	for (int i = 0; i < size; i++)
+	{
+		NewArray[i] = DynamicArray[i];
+	}
+
+	for (int i = size; i < size + count; i++)
+	{
+		int countOfElement = rand() % 10 + 1;
+
+		for (int j = 0; j < countOfElement; j++)
+		{
+			NewArray[i].push_back((char)(rand()%127));
+		}
+	}
+
+	delete[] DynamicArray;
+
+	DynamicArray = NewArray;
+	size += count;
+}
+
+template<typename T>
+inline void ListOnDynamicArray<T>::AddRandomElements()
+
+{
+	srand(time(0));
+	int count = rand() % 5 + 1;
+
+	T *NewArray = new T[size + count];
+
+	for (int i = 0; i < size; i++)
+	{
+		NewArray[i] = DynamicArray[i];
+	}
+
+	for (int i = size; i < size + count; i++)
+	{
+		int countOfElement = rand() % 50;
+
+		for (int j = 0; j < countOfElement; ++j)
+		{
+			NewArray[i].push_back((rand() % 10));
+		}
+	}
+
+	delete[] DynamicArray;
+
+	DynamicArray = NewArray;
+	size += count;
+}
+
+
 
 template<typename T>
 inline void ListOnDynamicArray<T>::QuickSort(int low, int high)

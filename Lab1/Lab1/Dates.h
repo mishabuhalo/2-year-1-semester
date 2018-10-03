@@ -2,10 +2,27 @@
 #pragma once
 #include "stdafx.h"
 #include <iostream>
-
+#include <vector>
 
 
 using namespace std;
+
+template<typename T>
+ostream & operator<<(ostream & os, const vector<T> v)
+{
+	os << "Vector{ ";
+	for (int i = 0; i < v.size() - 1; ++i)
+	{
+		os << v[i] << ", ";
+	}
+	if (v.size() > 1)
+	{
+		os << v[v.size() - 1] << ' ';
+	}
+	os << '}' << endl;
+	return os;
+}
+
 class Dates
 {
 public:
@@ -16,6 +33,7 @@ public:
 	void DifferenceBetweenDates(Dates data1, Dates data2, Dates fixedDate);
 	void AddDifference(Dates data, int jdn);
 	void AddNewDate();
+	void AddRandomDates();
 	void PrintDate(Dates date);
 	int jdn(Dates data);
 	int getYear(Dates data) { return data.year; }
@@ -73,10 +91,6 @@ public:
 		else return false;
 	}
 
-	
-
-
-protected:
 	int year, month, day, hour, minute, second;
 	
 	
@@ -180,6 +194,21 @@ inline void Dates::AddNewDate()
 	cin >> minute;
 	cout << "Enter second(0-60): ";
 	cin >> second;
+
+
+}
+
+inline void Dates::AddRandomDates()
+{
+
+
+	year = rand() % 100+1;
+	month = rand() % 12 + 1;
+	day = rand() % 30 + 1;
+	hour = rand() % 24;
+	minute = rand() % 60;
+	second = rand() % 60;
+
 
 
 }

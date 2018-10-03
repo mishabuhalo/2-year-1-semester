@@ -2,6 +2,8 @@
 
 #include "stdafx.h"
 #include <iostream>
+#include <vector>
+#include <ctime>
 
 
 using namespace std;
@@ -22,7 +24,7 @@ struct  Node
 };
 
 template <typename T>
- class Forward_list  : Dates
+ class Forward_list 
 {
 public:
 	Node<T> *root;
@@ -45,7 +47,8 @@ public:
 	Node<T> *SortedMerge(Node<T> * firsthalf, Node<T> * secondhalf);
 	void FrontBackSplit(Node<T> * source, Node<T>** head, Node<T> **end);
 	void MergeSort(Node<T> **root);
-
+	void AddRandomElements();
+	
 private:
 	int Size;
 	
@@ -167,6 +170,7 @@ T & Forward_list<T>::operator[](const int index)
 		counter++;
 	}				
 }
+
 
 template<typename T>
 inline void Forward_list<T>::insert(T data, int pos)
@@ -394,6 +398,91 @@ inline void Forward_list<T>::MergeSort(Node<T>** root)
 	MergeSort(&b);
 
 	*root = SortedMerge(a, b);
+}
+
+template<typename T>
+inline void Forward_list<T>::AddRandomElements()
+{
+	srand(time(0));
+	int count = rand() % 5 + 1;
+
+	
+	for (int i = 0; i < count; i++)
+	{
+		T temp;
+		int countOfElement = rand() % 50;
+
+		for (int j = 0; j < countOfElement; ++j)
+		{
+			temp.push_back((rand() % 10));
+		}
+		push_back(temp);
+	}
+
+	
+}
+
+inline void Forward_list<string>::AddRandomElements()
+{
+	srand(time(0));
+	int count = rand() % 5 + 1;
+
+
+	for (int i = 0; i < count; i++)
+	{
+		string temp;
+		int countOfElement = rand() % 50;
+
+		for (int j = 0; j < countOfElement; ++j)
+		{
+			temp.push_back((char)(rand() % 10));
+		}
+		push_back(temp);
+	}
+
+
+}
+
+inline void Forward_list<double>::AddRandomElements()
+{
+	srand(time(0));
+	int count = rand() % 5 + 1;
+
+
+	for (int i = 0; i < count; i++)
+	{
+		double temp;
+		int countOfElement = rand() % 50;
+
+		for (int j = 0; j < countOfElement; ++j)
+		{
+			double temp = (rand() % 10);
+		}
+		push_back(temp);
+	}
+
+
+}
+
+inline void Forward_list<int>::AddRandomElements()
+{
+	srand(time(0));
+	int count = rand() % 5 + 1;
+
+
+	for (int i = 0; i < count; i++)
+	{
+		int temp;
+		int countOfElement = rand() % 50;
+
+		for (int j = 0; j < countOfElement; ++j)
+		{
+			int temp = (rand() % 10);
+		}
+		push_back(temp);
+	}
+
+
 }
 
 
