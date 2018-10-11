@@ -174,7 +174,6 @@ inline void ListOnLibraryList<T>::AddRandomElements()
 
 inline void ListOnLibraryList<string>::AddRandomElements()
 {
-	srand(time(0));
 	int count = rand() % 5 + 1;
 
 
@@ -195,7 +194,6 @@ inline void ListOnLibraryList<string>::AddRandomElements()
 
 inline void ListOnLibraryList<double>::AddRandomElements()
 {
-	srand(time(0));
 	int count = rand() % 5 + 1;
 
 
@@ -216,7 +214,6 @@ inline void ListOnLibraryList<double>::AddRandomElements()
 
 inline void ListOnLibraryList<int>::AddRandomElements()
 {
-	srand(time(0));
 	int count = rand() % 5 + 1;
 
 

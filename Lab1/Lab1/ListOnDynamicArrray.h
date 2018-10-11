@@ -80,7 +80,7 @@ inline void ListOnDynamicArray<T>::push_front(T data)
 	delete[] DynamicArray;
 
 	DynamicArray = NewArray;
-	++length;
+	size++;
 }
 
 template<typename T>

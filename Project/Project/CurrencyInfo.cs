@@ -9,6 +9,7 @@ namespace Project
     class CurrencyInfo
     {
         public string name { get; set; }
+        public string symbol { get; set; }
         public string circulating_supply { get; set; }
         public CurrencyPrice quotes { get; set; }
     }

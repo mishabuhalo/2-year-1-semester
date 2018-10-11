@@ -49,6 +49,7 @@ public:
 	void MergeSort(Node<T> **root);
 	void AddRandomElements();
 	
+	
 private:
 	int Size;
 	
@@ -403,7 +404,7 @@ inline void Forward_list<T>::MergeSort(Node<T>** root)
 template<typename T>
 inline void Forward_list<T>::AddRandomElements()
 {
-	srand(time(0));
+
 	int count = rand() % 5 + 1;
 
 	
@@ -424,7 +425,6 @@ inline void Forward_list<T>::AddRandomElements()
 
 inline void Forward_list<string>::AddRandomElements()
 {
-	srand(time(0));
 	int count = rand() % 5 + 1;
 
 
@@ -445,7 +445,6 @@ inline void Forward_list<string>::AddRandomElements()
 
 inline void Forward_list<double>::AddRandomElements()
 {
-	srand(time(0));
 	int count = rand() % 5 + 1;
 
 
@@ -466,7 +465,6 @@ inline void Forward_list<double>::AddRandomElements()
 
 inline void Forward_list<int>::AddRandomElements()
 {
-	srand(time(0));
 	int count = rand() % 5 + 1;
 
 

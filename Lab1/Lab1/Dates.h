@@ -32,7 +32,7 @@ public:
 	void CalculateDayOfTheWeek(Dates data);
 	void DifferenceBetweenDates(Dates data1, Dates data2, Dates fixedDate);
 	void AddDifference(Dates data, int jdn);
-	void AddNewDate();
+	Dates AddNew();
 	void AddRandomDates();
 	void PrintDate(Dates date);
 	int jdn(Dates data);
@@ -92,8 +92,8 @@ public:
 	}
 
 	int year, month, day, hour, minute, second;
-	
-	
+
+
 };
 
 Dates::Dates()
@@ -115,31 +115,29 @@ inline void Dates::IscorrectDate(Dates date)
 
 inline void Dates::CalculateDayOfTheWeek(Dates data1)
 {
-	int a1 = (14 - data1.month) / 12;
-	int y1 = data1.year + 4800 - a1;
-	int m1 = data1.month + (12 * a1) - 3;
-	int jdn1 = data1.day + (153 * m1 + 2) / 5 + 365 * y1 + y1 / 4 - 32083;
+
+	int jdn1 = jdn(data1);
 	int result = jdn1 % 7;
 
-	if (result = 0)
+	if (result == 0)
 		cout << "Monday" << endl;
 	else
-		if (result = 1)
+		if (result == 1)
 			cout << "Tuesday" << endl;
 		else
-			if (result = 2)
+			if (result == 2)
 				cout << "Wednesday" << endl;
 			else
-				if (result = 3)
+				if (result == 3)
 					cout << "Thursday" << endl;
 				else
-					if (result = 4)
+					if (result == 4)
 						cout << "Friday" << endl;
 					else
-						if (result = 5)
+						if (result == 5)
 							cout << "Saturday" << endl;
 						else
-							if (result = 6)
+							if (result == 6)
 								cout << "Sunday" << endl;
 
 
@@ -152,7 +150,7 @@ inline void Dates::DifferenceBetweenDates(Dates data1, Dates data2, Dates fixedD
 
 	int jdn2 = jdn(data2);
 	int result = abs(jdn2 - jdn1);
-	cout << "The difference betwenn two dates is about " << jdn2 - jdn1 << " days" << endl;
+	cout << "The difference between two dates is about " << jdn2 - jdn1 << " days" << endl;
 	char c;
 	cout << "Do you want to add this difference to some fixed data? (y/n)" << endl;
 	cin >> c;
@@ -178,31 +176,31 @@ inline void Dates::AddDifference(Dates fixedDate, int result)
 
 }
 
-inline void Dates::AddNewDate()
-{
 
+inline Dates Dates::AddNew()
+{
+	Dates date;
 	cout << "Enter your data: " << endl;
 	cout << "Enter year: ";
-	cin >> year;
+	cin >> date.year;
 	cout << "Enter month (1-12): ";
-	cin >> month;
+	cin >> date.month;
 	cout << "Enter day(1-31): ";
-	cin >> day;
+	cin >> date.day;
 	cout << "Enter hour(0-24): ";
-	cin >> hour;
+	cin >> date.hour;
 	cout << "Enter minute(0-60): ";
-	cin >> minute;
+	cin >> date.minute;
 	cout << "Enter second(0-60): ";
-	cin >> second;
-
-
+	cin >> date.second;
+	return date;
 }
 
 inline void Dates::AddRandomDates()
 {
 
 
-	year = rand() % 100+1;
+	year = rand() % 100 + 1;
 	month = rand() % 12 + 1;
 	day = rand() % 30 + 1;
 	hour = rand() % 24;

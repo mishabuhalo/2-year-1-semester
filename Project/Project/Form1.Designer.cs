@@ -35,7 +35,12 @@
             this.Volume = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CirculatingSupply = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Change = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.UpdateButtton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.GraphButton = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -48,9 +53,10 @@
             this.Volume,
             this.CirculatingSupply,
             this.Change});
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Location = new System.Drawing.Point(1, 28);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(983, 429);
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(983, 424);
             this.dataGridView1.TabIndex = 0;
             // 
             // Name
@@ -101,18 +107,57 @@
             this.Change.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.Change.Width = 142;
             // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.UpdateButtton,
+            this.toolStripSeparator1,
+            this.GraphButton});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(984, 25);
+            this.toolStrip1.TabIndex = 1;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // UpdateButtton
+            // 
+            this.UpdateButtton.Image = global::Project.Properties.Resources.UpdateButton;
+            this.UpdateButtton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.UpdateButtton.Name = "UpdateButtton";
+            this.UpdateButtton.Size = new System.Drawing.Size(91, 22);
+            this.UpdateButtton.Text = "Update data";
+            this.UpdateButtton.Click += new System.EventHandler(this.UpdateButtton_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // GraphButton
+            // 
+            this.GraphButton.Image = global::Project.Properties.Resources.GraphButton;
+            this.GraphButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.GraphButton.Name = "GraphButton";
+            this.GraphButton.Size = new System.Drawing.Size(180, 22);
+            this.GraphButton.Text = "Show graph for selected coin";
+            this.GraphButton.Click += new System.EventHandler(this.toolStripButton2_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 390);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.dataGridView1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
            // this.Name = "Form1";
             this.Text = "Coin Market Cap";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -125,6 +170,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Volume;
         private System.Windows.Forms.DataGridViewTextBoxColumn CirculatingSupply;
         private System.Windows.Forms.DataGridViewTextBoxColumn Change;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton UpdateButtton;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton GraphButton;
     }
 }
 
