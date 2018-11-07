@@ -23,12 +23,13 @@ namespace Project
         public Form1()
         {
             InitializeComponent();
-            LoadData();
+            MyTimer();
+            //LoadData();
 
         }
 
 
-        public void LoadData()
+        public void LoadData(object obj)
         {
             List<double> ListOfPrices = new List<double>();
             string url = "https://api.coinmarketcap.com/v2/ticker/?&sort=id";
@@ -51,7 +52,7 @@ namespace Project
                 dataGridView1.Rows.Add(currencyResponse.data[k].name, "$" + currencyResponse.data[k].quotes.USD.market_cap, "$" + currencyResponse.data[k].quotes.USD.price, "$" + currencyResponse.data[k].quotes.USD.volume_24h, currencyResponse.data[k].circulating_supply + " " + currencyResponse.data[k].symbol, currencyResponse.data[k].quotes.USD.percent_change_24h + '%');
             }
 
-            if (tmp == 0)
+            if (tmp == 0)   
             {
                 foreach (var k in currencyResponse.data.Keys)
                 {
@@ -70,15 +71,22 @@ namespace Project
             ListOfPrices = null;
         }
 
- 
+        void MyTimer()
+        {
+            int num = 0;
+            TimerCallback tm = new TimerCallback(LoadData);
+            System.Threading.Timer timer = new System.Threading.Timer(tm, num,0,30000);
+
+
+        }
             
 
-        private void UpdateButtton_Click(object sender, EventArgs e)
+       /* private void UpdateButtton_Click(object sender, EventArgs e)
         {
             dataGridView1.Rows.Clear();
             LoadData();
-        }
-
+        }*/
+        
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
             
