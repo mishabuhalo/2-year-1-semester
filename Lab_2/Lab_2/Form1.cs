@@ -17,6 +17,7 @@ namespace Lab_2
         DataTable archTable;
         DataSet currSet;
         DataSet archSet;
+        List<DataSet> listOfAllTypes = new List<DataSet>();
         public MainForm()
         {
             InitializeComponent();
@@ -163,12 +164,8 @@ namespace Lab_2
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-
-       
             currSet.Tables[0].WriteXml("Current.xml");
             archSet.Tables[0].WriteXml("Archive.xml");
-
-
         }
     }
 }
