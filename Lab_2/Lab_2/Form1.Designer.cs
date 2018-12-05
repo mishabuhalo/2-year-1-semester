@@ -46,7 +46,12 @@
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.btnShow = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnReturn = new System.Windows.Forms.ToolStripButton();
+            this.btnAddContext = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnDeleteContex = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.showMulti = new System.Windows.Forms.ToolStripButton();
+            this.contexBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.currNotes)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -64,7 +69,7 @@
             // 
             this.txtTitle.Location = new System.Drawing.Point(59, 33);
             this.txtTitle.Name = "txtTitle";
-            this.txtTitle.Size = new System.Drawing.Size(200, 20);
+            this.txtTitle.Size = new System.Drawing.Size(222, 20);
             this.txtTitle.TabIndex = 1;
             // 
             // txtMessage
@@ -72,7 +77,7 @@
             this.txtMessage.Location = new System.Drawing.Point(59, 84);
             this.txtMessage.Multiline = true;
             this.txtMessage.Name = "txtMessage";
-            this.txtMessage.Size = new System.Drawing.Size(200, 203);
+            this.txtMessage.Size = new System.Drawing.Size(222, 207);
             this.txtMessage.TabIndex = 2;
             // 
             // currNotes
@@ -82,11 +87,11 @@
             this.currNotes.AllowUserToResizeColumns = false;
             this.currNotes.AllowUserToResizeRows = false;
             this.currNotes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.currNotes.Location = new System.Drawing.Point(286, 84);
+            this.currNotes.Location = new System.Drawing.Point(366, 84);
             this.currNotes.Name = "currNotes";
             this.currNotes.ReadOnly = true;
             this.currNotes.RowHeadersVisible = false;
-            this.currNotes.Size = new System.Drawing.Size(290, 203);
+            this.currNotes.Size = new System.Drawing.Size(312, 207);
             this.currNotes.TabIndex = 3;
             // 
             // toolStrip1
@@ -104,10 +109,14 @@
             this.toolStripSeparator5,
             this.btnShow,
             this.toolStripSeparator6,
-            this.btnReturn});
+            this.btnAddContext,
+            this.toolStripSeparator8,
+            this.btnDeleteContex,
+            this.toolStripSeparator7,
+            this.showMulti});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(636, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(737, 25);
             this.toolStrip1.TabIndex = 4;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -201,30 +210,76 @@
             this.toolStripSeparator6.Name = "toolStripSeparator6";
             this.toolStripSeparator6.Size = new System.Drawing.Size(6, 25);
             // 
-            // btnReturn
+            // btnAddContext
             // 
-            this.btnReturn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnReturn.Image = ((System.Drawing.Image)(resources.GetObject("btnReturn.Image")));
-            this.btnReturn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnReturn.Name = "btnReturn";
-            this.btnReturn.Size = new System.Drawing.Size(133, 22);
-            this.btnReturn.Text = "Return to current notes";
-            this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
+            this.btnAddContext.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnAddContext.Image = ((System.Drawing.Image)(resources.GetObject("btnAddContext.Image")));
+            this.btnAddContext.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnAddContext.Name = "btnAddContext";
+            this.btnAddContext.Size = new System.Drawing.Size(104, 22);
+            this.btnAddContext.Text = "Add New Context";
+            this.btnAddContext.Click += new System.EventHandler(this.btnAddContext_Click);
+            // 
+            // toolStripSeparator8
+            // 
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            this.toolStripSeparator8.Size = new System.Drawing.Size(6, 25);
+            // 
+            // btnDeleteContex
+            // 
+            this.btnDeleteContex.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnDeleteContex.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteContex.Image")));
+            this.btnDeleteContex.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnDeleteContex.Name = "btnDeleteContex";
+            this.btnDeleteContex.Size = new System.Drawing.Size(88, 22);
+            this.btnDeleteContex.Text = "Delete Context";
+            this.btnDeleteContex.Click += new System.EventHandler(this.btnDeleteContex_Click);
+            // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 25);
+            // 
+            // showMulti
+            // 
+            this.showMulti.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.showMulti.Image = ((System.Drawing.Image)(resources.GetObject("showMulti.Image")));
+            this.showMulti.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.showMulti.Name = "showMulti";
+            this.showMulti.Size = new System.Drawing.Size(135, 22);
+            this.showMulti.Text = "Show multimedia Form";
+            this.showMulti.ToolTipText = "Show multimedia Form";
+            this.showMulti.Click += new System.EventHandler(this.showMulti_Click);
+            // 
+            // contexBox
+            // 
+            this.contexBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.contexBox.FormattingEnabled = true;
+            this.contexBox.Location = new System.Drawing.Point(388, 33);
+            this.contexBox.Name = "contexBox";
+            this.contexBox.Size = new System.Drawing.Size(222, 21);
+            this.contexBox.TabIndex = 5;
+            this.contexBox.SelectedIndexChanged += new System.EventHandler(this.contexBox_SelectedIndexChanged);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(636, 312);
+            this.ClientSize = new System.Drawing.Size(737, 312);
+            this.Controls.Add(this.contexBox);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.currNotes);
             this.Controls.Add(this.txtMessage);
             this.Controls.Add(this.txtTitle);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.KeyPreview = true;
+            this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "Notes Application";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.currNotes)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
@@ -252,7 +307,12 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripButton btnShow;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
-        private System.Windows.Forms.ToolStripButton btnReturn;
+        private System.Windows.Forms.ComboBox contexBox;
+        private System.Windows.Forms.ToolStripButton btnAddContext;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
+        private System.Windows.Forms.ToolStripButton btnDeleteContex;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
+        private System.Windows.Forms.ToolStripButton showMulti;
     }
 }
 
