@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Newtonsoft.Json;
 using System.IO;
 using System.Net;
+using System.Timers;
 using ZedGraph;
 
 namespace Project
@@ -23,16 +24,20 @@ namespace Project
         public Form1()
         {
             InitializeComponent();
-            MyTimer();
-            //LoadData();
+            LoadData();
+            
+
 
         }
 
 
-        public void LoadData(object obj)
+        public void LoadData()
         {
+            int num = 0;
+            TimerCallback tm = new TimerCallback(upd);
+            System.Threading.Timer timer = new System.Threading.Timer(tm, num, 60000, 60000);
             List<double> ListOfPrices = new List<double>();
-            string url = "https://api.coinmarketcap.com/v2/ticker/?&sort=id";
+            string url = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?CMC_PRO_API_KEY=72704fa6-f50b-43f7-8164-98ccc03040cd";
 
             HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
 
@@ -47,14 +52,15 @@ namespace Project
 
             CurrencyResponse currencyResponse = JsonConvert.DeserializeObject<CurrencyResponse>(response);
 
-            foreach (string k in currencyResponse.data.Keys)
+            for (int k = 0; k < currencyResponse.data.Count(); k++)
             {
-                dataGridView1.Rows.Add(currencyResponse.data[k].name, "$" + currencyResponse.data[k].quotes.USD.market_cap, "$" + currencyResponse.data[k].quotes.USD.price, "$" + currencyResponse.data[k].quotes.USD.volume_24h, currencyResponse.data[k].circulating_supply + " " + currencyResponse.data[k].symbol, currencyResponse.data[k].quotes.USD.percent_change_24h + '%');
+                dataGridView1.Rows.Add(currencyResponse.data[k].name, "$" + currencyResponse.data[k].quote.USD.market_cap, "$" + currencyResponse.data[k].quote.USD.price, "$" + currencyResponse.data[k].quote.USD.volume_24h, currencyResponse.data[k].circulating_supply + " " + currencyResponse.data[k].symbol, currencyResponse.data[k].quote.USD.percent_change_24h + '%');
             }
+            
 
             if (tmp == 0)   
             {
-                foreach (var k in currencyResponse.data.Keys)
+                for (int k = 0; k < currencyResponse.data.Count(); k++)
                 {
                     ListOfNames.Add(currencyResponse.data[k].name);
                 }
@@ -62,31 +68,30 @@ namespace Project
             }
 
 
-            foreach (var k in currencyResponse.data.Keys)
+            for (int k = 0; k < currencyResponse.data.Count(); k++)
             {
-                ListOfPrices.Add(currencyResponse.data[k].quotes.USD.price);
+                ListOfPrices.Add(currencyResponse.data[k].quote.USD.price);
             }
             ListOfAllCurrencies.Add(ListOfPrices);
 
             ListOfPrices = null;
         }
 
-        void MyTimer()
-        {
-            int num = 0;
-            TimerCallback tm = new TimerCallback(LoadData);
-            System.Threading.Timer timer = new System.Threading.Timer(tm, num,0,30000);
-
-
-        }
             
+        public void upd (object obj)
+        {
+            UpdateButtton_Click(new object(), new EventArgs());
+        }
 
-       /* private void UpdateButtton_Click(object sender, EventArgs e)
+        private void UpdateButtton_Click(object sender, EventArgs e)
         {
             dataGridView1.Rows.Clear();
+            
             LoadData();
-        }*/
+        }
+
         
+         
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
             

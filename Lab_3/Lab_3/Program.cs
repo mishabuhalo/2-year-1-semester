@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Timers;
-namespace Project
+
+namespace Lab_3
 {
     static class Program
     {
@@ -17,7 +17,6 @@ namespace Project
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
-          
         }
     }
 }

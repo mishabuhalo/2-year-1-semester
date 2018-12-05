@@ -126,7 +126,7 @@
             this.UpdateButtton.Name = "UpdateButtton";
             this.UpdateButtton.Size = new System.Drawing.Size(91, 22);
             this.UpdateButtton.Text = "Update data";
-            //this.UpdateButtton.Click += new System.EventHandler(this.UpdateButtton_Click);
+            this.UpdateButtton.Click += new System.EventHandler(this.UpdateButtton_Click);
             // 
             // toolStripSeparator1
             // 

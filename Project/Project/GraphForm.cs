@@ -39,8 +39,9 @@ namespace Project
             LineItem myCurve = pane.AddCurve("Sinc", list, Color.Blue, SymbolType.None);
 
             pane.YAxis.Title = "Price in USD";
-            pane.XAxis.Title = "Update number";
+            pane.XAxis.Title = "Update number of current session";
             pane.Title = "Price graph";
+
             zedGraphControl1.AxisChange();
 
             zedGraphControl1.Invalidate();

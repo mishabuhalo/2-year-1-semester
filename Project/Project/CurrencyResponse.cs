@@ -8,6 +8,6 @@ namespace Project
 {
     class CurrencyResponse
     {
-        public Dictionary<string, CurrencyInfo> data { get; set; }
+        public List<CurrencyInfo> data { get; set; }
     }
 }
